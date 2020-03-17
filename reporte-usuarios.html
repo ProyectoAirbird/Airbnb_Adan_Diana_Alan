@@ -103,14 +103,14 @@
     </div>
 
     <script type="text/javascript">
-        // if (localStorage.getItem("token") === null) {
-        //     window.location.href = "home.php";
-        // }
+         if (localStorage.getItem("token") === null) {
+         //    window.location.href = "home.php";
+         };
 
-        // $('#cerrar_sesion').on('click', function(e) {
-        //     localStorage.clear();
+         $('#cerrar_sesion').on('click', function(e) {
+             localStorage.clear();
         //     window.location.href = "index.php";
-        // });
+        });
 
         $.ajax({
             type: 'GET',
