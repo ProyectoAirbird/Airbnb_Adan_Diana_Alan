@@ -89,7 +89,8 @@
                     <p id="error" style="color: red; display:none;"></p>
                     <input name="firstname" type="text" class="form-control" placeholder="Nombre" required><br>
                     <input name="lastname" type="text" class="form-control" placeholder="Apellido" required><br>
-                    <input name="city" type="text" class="form-control" placeholder="Ciudad" required><br>
+                    <input name="address" type="text" class="form-control" placeholder="Direccion" required><br>
+                    <input name="city" type="text" class="form-control" placeholder="Estado" required><br>
                     <input name="country" type="text" class="form-control" placeholder="País" required><br>
                     <input name="district" type="text" class="form-control" placeholder="Distrito" required><br>
                     <div class="custom-file">
@@ -101,32 +102,33 @@
         </div>
     </div>
 
-   <!-- <script type="text/javascript">
-        if (localStorage.getItem("token") == null) {
-            window.location.href = "index.php";
-        }
-        $('#cerrar_sesion').on('click', function(e) {
-            localStorage.clear();
-            window.location.href = "index.php";
-        });
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
+<script type="text/javascript">
 
+        if (localStorage.getItem("token") == null) {
+            //window.location.href = "index.php";
+        };
+     $('#cerrar_sesion').on('click', function(e) {
+            localStorage.clear();
+           // window.location.href = "index.php";
+        });
+     $('form').on('submit', function(e) {
+        e.preventDefault();
+           e.stopImmediatePropagation();
+        
             $.ajax({
                 type: 'POST',
-                url: 'https://api-rest-biblioteca-180394.herokuapp.com/usuario',
+                url: 'http://localhost:3000/customer/',
                 data: $('form').serialize(),
                 beforeSend: function(request) {
                     request.setRequestHeader("token", window.localStorage.getItem('token'));
                 },
                 success: function(resp) {
-                    console.log(resp.usrDB._id);
+                    console.log(resp.customerDB._id);
                     var formData = new FormData();
                     formData.append('archivo', $('input[type=file]')[0].files[0]);
                     $.ajax({
                         type: 'PUT',
-                        url: `https://api-rest-biblioteca-180394.herokuapp.com/upload/usuario/${resp.usrDB._id}`,
+                        url: `http://localhost:3000/customer/${resp.customerDB._id}`,
                         data: formData,
                         processData: false,
                         contentType: false,

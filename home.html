@@ -29,13 +29,7 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" style="
-                margin-left: 368px; background-color: #FE5B5F ; color: black; border-color: black;
-            ">
-
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: #FE5B5F ; color: black; border-color: black;" >Buscar</button>
-              </form>
+            
             <ul class="navbar-nav ml-auto flex-column-reverse flex-md-row">
         
             </ul>
@@ -44,17 +38,21 @@
     </nav>
     <div class="container-fluid">
         <div class="row h-100 d-flex justify-content-center">
-            <div class="col-4 mt-5">
+            <div class="col-md-6 mt-5">
+                <h2>
+                    <div class="p-3 mb-2 bg-secondary text-white font-weight-normal">Iniciar sesión</div>
+                </h2>
+                <hr>
                 <form enctype="multipart/form-data">
                     <p id="error" style="color: red; display: none;"></p>
-                    <input name="email" type="text" class="form-control" placeholder="Por favor inserta tu email"><br>
-                    <input name="password" type="password" class="form-control" placeholder="Por favor inserta tu password"><br>
+                    <input name="email" type="text" class="form-control" placeholder="email"><br>
+                    <input name="password" type="password" class="form-control" placeholder="password"><br>
                     <button type="submit" class="btn btn-block  btn-secondary font-weight-normal ">Enviar</button>
                 </form>
             </div>
         </div>
     </div>
-    <!--
+    
     <script type="text/javascript">
         $('form').on('submit', function(e) {
             e.preventDefault();
@@ -62,7 +60,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'https://api-rest-biblioteca-180394.herokuapp.com/login',
+                url: 'http://localhost:3000/login',
                 data: $('form').serialize(),
                 success: function(resp) {
                     window.localStorage.setItem('token', resp.token); //cookie
