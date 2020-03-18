@@ -83,13 +83,22 @@
         <div class="row h-100 d-flex justify-content-center">
             <div class="col-md-6 mt-5">
                 <h2>
-                    <div class="p-3 mb-2 bg-secondary text-white font-weight-normal">Rentas</div>
+                    <div class="p-3 mb-2 bg-secondary text-white font-weight-normal">Alta Propiedad</div>
                 </h2>
                 <hr>
                 <form enctype="multipart/form-data">
                     <p id="error" style="color: red; display:none;"></p>
-                    <input name="customer" type="text" class="form-control" placeholder="id customer" required><br>
-                    <input name="name" type="text" class="form-control" placeholder="id listingsAndReviews" required><br>
+                    <input name="name" type="text" class="form-control" placeholder="Nombre" required><br>
+                    <input name="listing_url" type="text" class="form-control" placeholder="listing_url" required><br>
+                    <input name=" property_type" type="text" class="form-control" placeholder="tipo de propiedad" required><br>
+                    <input name="summary" type="text" class="form-control" placeholder="summary" required><br>
+                    <input name="description" type="text" class="form-control" placeholder="description" required><br>
+                    <input name="notes" type="text" class="form-control" placeholder="notes" required><br>
+                    <input name="price" type="int" class="form-control" placeholder="price" required><br>
+                    <div class="custom-file">
+                        <br><br>
+                    </div>
+                    <!-- <input name="button" type="submit" onclick='alert("Se agrego correctamente el registro.")' value="Enviar" /> -->
                     <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button>
                 </form>
             </div>
@@ -97,30 +106,29 @@
     </div>
 
     <script type="text/javascript">
-        if (localStorage.getItem("token") === null) {
-            window.location.href = "home.html"
-        }
-
+        if (localStorage.getItem("token") == null) {
+            //window.location.href = "index.php";
+        };
         $('#cerrar_sesion').on('click', function(e) {
             localStorage.clear();
-            window.location.href = "home.html";
+            // window.location.href = "index.php";
         });
         $('form').on('submit', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
+
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:3000/rentas',
+                url: 'http://localhost:3000/listingsAndReviews',
                 data: $('form').serialize(),
                 success: function(resp) {
-                    alert("Reserva agregada exitosamente")
-
+                    alert("Habitacion creada con exito");
+                    window.location.href = "reporte-habitacion.html";
 
                 },
                 error: function(err) {
                     $('#error').text(err.responseJSON.err.message);
                     $('#error').show();
-
                 }
             });
         });
@@ -129,79 +137,7 @@
             $('#error').hide();
         });
     </script>
-
-
-    <!-- 
-    <script type="text/javascript">
-        $.ajax({
-            type: 'GET',
-            url: 'https://api-rest-biblioteca-180394.herokuapp.com/libro',
-            beforeSend: function(request) {
-                request.setRequestHeader("token", window.localStorage.getItem('token'));
-            },
-            success: function(resp) {
-                $.each(resp.listingsAndReviews, function(i, item) {
-                    $('#listingsAndReviews').append(
-                        `<option value='${item._id}'>${item.name}</option>`
-                    );
-                });
-            },
-            error: function(err) {
-                console.log(err.responseJSON);
-            }
-        });
-        $.ajax({
-            type: 'GET',
-            url: 'https://api-rest-biblioteca-180394.herokuapp.com/usuario',
-            beforeSend: function(request) {
-                request.setRequestHeader("token", window.localStorage.getItem('token'));
-            },
-            success: function(resp) {
-                $.each(resp.usuarios, function(i, item) {
-                    $('#customers').append(
-                        `<option value='${item._id}'>${item.firstname}</option>`
-                    );
-                });
-            },
-            error: function(err) {
-                console.log(err.responseJSON);
-            }
-        });
-        if (localStorage.getItem("token") == null) {
-            // window.location.href = "index.php";
-        }
-        $('#cerrar_sesion').on('click', function(e) {
-            localStorage.clear();
-            // window.location.href = "index.php";
-        });
-
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-
-            $.ajax({
-                type: 'POST',
-                url: 'https://api-rest-biblioteca-180394.herokuapp.com/prestamos',
-                data: $('form').serialize(),
-                beforeSend: function(request) {
-                    request.setRequestHeader("token", window.localStorage.getItem('token'));
-                },
-                success: function(resp) {
-                    alert("Prestamo creado con exito");
-                    window.location.href = "reporte-prestamos.html";
-                },
-                error: function(err) {
-                    console.log(err);
-                    $('#error').text(err.responseJSON.err.message);
-                    $('#error').show();
-                }
-            });
-        });
-
-        $('input').on('focus', function(e) {
-            $('#error').hide();
-        });
-    </script> -->
+    -->
 
 
     <br>

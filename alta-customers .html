@@ -44,7 +44,7 @@
                                           </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item font-weight-normal" href="alta-customers .html">Cliente</a>
-
+                        <a class="dropdown-item font-weight-normal" href="alta-habitacion.html">Habitacion</a>
                         <hr>
                     </div>
                 </li>
@@ -96,8 +96,8 @@
                     <div class="custom-file">
                         <br><br>
                     </div>
-                    <input name="button" type="submit" onclick='alert("Se agrego correctamente el registro.")' value="Enviar" />
-                    <!-- <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button> -->
+                    <!-- <input name="button" type="submit" onclick='alert("Se agrego correctamente el registro.")' value="Enviar" /> -->
+                    <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button>
                 </form>
             </div>
         </div>
@@ -117,38 +117,14 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:3000/customer/',
+                url: 'http://localhost:3000/customer',
                 data: $('form').serialize(),
-                beforeSend: function(request) {
-                    request.setRequestHeader("token", window.localStorage.getItem('token'));
-                },
                 success: function(resp) {
-                    console.log(resp.customerDB._id);
-                    var formData = new FormData();
-                    formData.append('archivo', $('input[type=file]')[0].files[0]);
-                    $.ajax({
-                        type: 'PUT',
-                        url: `http://localhost:3000/customer/${resp.customerDB._id}`,
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        beforeSend: function(request) {
-                            request.setRequestHeader("token", window.localStorage.getItem('token'));
-                        },
-                        success: function(res) {
-                            console.log(res);
-                            alert("Cliente creado con exito");
-                            window.location.href = "reporte-customers .html";
-                        },
-                        error: function(er) {
-                            console.log(er);
-                            $('#error').text(er.responseJSON);
-                            $('#error').show();
-                        }
-                    });
+                    alert("Usuario creado con exito");
+                    window.location.href = "reporte-customers.html";
+
                 },
                 error: function(err) {
-                    console.log(err);
                     $('#error').text(err.responseJSON.err.message);
                     $('#error').show();
                 }
