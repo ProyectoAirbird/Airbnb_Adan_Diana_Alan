@@ -19,7 +19,7 @@
 
 <body>
 
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="./Img/airbnb.png" width="50" height="50" class="d-inline-block align -top">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link font-weight-normal" href="alta-prestamos.html
-                ">Reservar<span class="sr-only">(current)</span></a>
+                ">Rentas<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +44,7 @@
                                           </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item font-weight-normal" href="alta-customers .html">Cliente</a>
-                        
+
                         <hr>
                     </div>
                 </li>
@@ -66,8 +66,8 @@
                 margin-left: 368px; background-color: #FE5B5F ; color: black; border-color: black;
             ">
 
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: #FE5B5F ; color: black; border-color: black;" >Buscar</button>
-              </form>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="background-color: #FE5B5F ; color: black; border-color: black;">Buscar</button>
+            </form>
             <ul class="navbar-nav ml-auto flex-column-reverse flex-md-row">
                 <li>
                     <a id="cerrar_sesion" class="nav-link" href="#">Cerrar Sesion <span class="sr-only"></span></a>
@@ -96,25 +96,25 @@
                     <div class="custom-file">
                         <br><br>
                     </div>
-                    <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button>
+                    <input name="button" type="submit" onclick='alert("Se agrego correctamente el registro.")' value="Enviar" />
+                    <!-- <button type="submit" class="btn btn-secondary font-weight-normal">Enviar</button> -->
                 </form>
             </div>
         </div>
     </div>
 
-<script type="text/javascript">
-
+    <script type="text/javascript">
         if (localStorage.getItem("token") == null) {
             //window.location.href = "index.php";
         };
-     $('#cerrar_sesion').on('click', function(e) {
+        $('#cerrar_sesion').on('click', function(e) {
             localStorage.clear();
-           // window.location.href = "index.php";
+            // window.location.href = "index.php";
         });
-     $('form').on('submit', function(e) {
-        e.preventDefault();
-           e.stopImmediatePropagation();
-        
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:3000/customer/',
@@ -159,7 +159,7 @@
             $('#error').hide();
         });
     </script>
--->
+    -->
 
 
     <br>

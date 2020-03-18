@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link font-weight-normal" href="alta-prestamos.html
-                ">Reservar<span class="sr-only">(current)</span></a>
+                ">Rentas<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,14 +104,14 @@
         </div>
     </div>
     <script type="text/javascript">
-         if (localStorage.getItem("token") === null) {
-        //     window.location.href = "home.php";
-         };
+        if (localStorage.getItem("token") === null) {
+            //     window.location.href = "home.php";
+        };
 
-         $('#cerrar_sesion').on('click', function(e) {
-             localStorage.clear();
-        //     window.location.href = "index.php";
-         });
+        $('#cerrar_sesion').on('click', function(e) {
+            localStorage.clear();
+            //     window.location.href = "index.php";
+        });
 
         $.ajax({
             type: 'GET',

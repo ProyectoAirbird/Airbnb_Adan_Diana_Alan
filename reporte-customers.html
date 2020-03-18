@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link font-weight-normal" href="alta-prestamos.html
-                ">Reservar<span class="sr-only">(current)</span></a>
+                ">Rentas<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle font-weight-normal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,6 +91,7 @@
                 <hr>
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <thead>
+                        <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Address </th>
@@ -109,14 +110,14 @@
     </div>
 
     <script type="text/javascript">
-         if (localStorage.getItem("token") === null) {
+        if (localStorage.getItem("token") === null) {
             window.location.href = "home.php";
-         };
+        };
 
-         $('#cerrar_sesion').on('click', function(e) {
-             localStorage.clear();
-        //     window.location.href = "index.php";
-         });
+        $('#cerrar_sesion').on('click', function(e) {
+            localStorage.clear();
+            //     window.location.href = "index.php";
+        });
 
         $.ajax({
             type: 'GET',
@@ -129,6 +130,9 @@
                     $('tbody').append(
                         '<tr>' +
                         // `<td><img class='img-thumbnail img-fluid' width='80px' src='https://api-rest-biblioteca-180394.herokuapp.com/imagen/usuario/${item.img}'></td>` +
+                        `<td>
+                <input name='id' class='form-control' value='${item._id}'>
+                </td>` +
                         `<td>
                 <input name='firstName' class='form-control' value='${item.firstname}'>
                 </td>` +
@@ -173,8 +177,9 @@
 
             if (opt == true) {
                 $.ajax({
+
                     type: 'PUT',
-                    url: `http://localhost:3000/customer/${id}`,
+                    url: `http://localhost:3000/customer/${_id}`,
                     data: form,
                     beforeSend: function(request) {
                         request.setRequestHeader("token", window.localStorage.getItem('token'));
