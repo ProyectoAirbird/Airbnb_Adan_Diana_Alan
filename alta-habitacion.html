@@ -90,7 +90,7 @@
                     <p id="error" style="color: red; display:none;"></p>
                     <input name="name" type="text" class="form-control" placeholder="Nombre" required><br>
                     <input name="listing_url" type="text" class="form-control" placeholder="listing_url" required><br>
-                    <input name=" property_type" type="text" class="form-control" placeholder="tipo de propiedad" required><br>
+                    <input name="property_type" type="text" class="form-control" placeholder="tipo de propiedad" required><br>
                     <input name="summary" type="text" class="form-control" placeholder="summary" required><br>
                     <input name="description" type="text" class="form-control" placeholder="description" required><br>
                     <input name="notes" type="text" class="form-control" placeholder="notes" required><br>
@@ -122,7 +122,7 @@
                 url: 'http://localhost:3000/listingsAndReviews',
                 data: $('form').serialize(),
                 success: function(resp) {
-                    alert("Habitacion creada con exito");
+                    alert("propiedad creado con exito");
                     window.location.href = "reporte-habitacion.html";
 
                 },
@@ -137,7 +137,6 @@
             $('#error').hide();
         });
     </script>
-    -->
 
 
     <br>
